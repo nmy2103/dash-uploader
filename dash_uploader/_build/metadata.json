@@ -186,6 +186,17 @@
           "computed": false
         }
       },
+      "maxTotalSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Maximum total size in bytes.",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
       "chunkSize": {
         "type": {
           "name": "number"

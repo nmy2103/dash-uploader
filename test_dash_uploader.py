@@ -10,7 +10,8 @@ du.configure_upload(app, UPLOAD_FOLDER)
 
 
 app.layout = html.Div([
-    du.Upload(id = 'test-uploader', text = 'Upload files here', max_files = 15)
+    du.Upload(id = 'test-uploader', text = 'Upload files here',
+              max_files = 50, max_total_size = 1 * 1024 * 1024 * 1024)
 ])
 
 if __name__ == '__main__':

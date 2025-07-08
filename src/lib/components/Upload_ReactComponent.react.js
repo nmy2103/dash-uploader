@@ -78,7 +78,45 @@ export default class Upload_ReactComponent extends Component {
             ResumableField.assignDrop(this.dropZone);
         }
 
+        ResumableField.on('filesAdded', (files) => {
+            let totalSize = 0;
+            ResumableField.files.forEach(function(f) {
+                totalSize += f.size;
+            });
+            if (this.props.maxTotalSize && totalSize > this.props.maxTotalSize) {
+                this.setState({
+                    messageStatus: 'Upload size exceeds the limit of ' +
+                        (this.props.maxTotalSize / (1024 * 1024 * 1024)).toFixed(2) +
+                        ' GB'
+                });
+                // Remove newly added files
+                files.forEach(file => ResumableField.removeFile(file));
+                return;
+            }
+            // If OK, trigger upload (if you want to auto-start)
+            ResumableField.upload();
+        });
+
         ResumableField.on('fileAdded', (file) => {
+
+            // Calculate the total size
+            let totalSize = 0;
+            ResumableField.files.forEach(function(f) {
+                totalSize += f.size;
+            });
+
+            // Check against maxTotalSize
+            if (this.props.maxTotalSize && totalSize > this.props.maxTotalSize) {
+                this.setState({
+                    messageStatus: 'Upload size exceeds the limit of ' +
+                        (this.props.maxTotalSize / (1024 * 1024 * 1024)).toFixed(2) +
+                        ' GB'
+                });
+
+                // Remove the file that was just added (so user can try again)
+                ResumableField.removeFile(file);
+                return;
+            }
             this.props.setProps({
                 // Currently supports uploading only one file at a time.
                 isCompleted: false,
@@ -369,6 +407,11 @@ Upload_ReactComponent.propTypes = {
     maxFileSize: PropTypes.number,
 
     /**
+     * Maximum total size in bytes.
+     */
+    maxTotalSize: PropTypes.number,
+
+    /**
      * Size of file chunks to send to server.
      */
     chunkSize: PropTypes.number,
@@ -517,6 +560,7 @@ Upload_ReactComponent.propTypes = {
 Upload_ReactComponent.defaultProps = {
     maxFiles: 1,
     maxFileSize: 1024 * 1024 * 10,
+    maxTotalSize: null,
     chunkSize: 1024 * 1024,
     simultaneuosUploads: 1,
     service: '/API/dash-uploader',

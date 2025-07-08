@@ -66,6 +66,9 @@ Keyword arguments:
 - maxFiles (number; default 1):
     Maximum number of files that can be uploaded in one session.
 
+- maxTotalSize (number; optional):
+    Maximum total size in bytes.
+
 - pauseButton (boolean; default True):
     Whether or not to have a pause button.
 
@@ -100,10 +103,10 @@ Keyword arguments:
     _namespace = 'dash_uploader'
     _type = 'Upload_ReactComponent'
     @_explicitize_args
-    def __init__(self, maxFiles=Component.UNDEFINED, maxFileSize=Component.UNDEFINED, chunkSize=Component.UNDEFINED, simultaneousUploads=Component.UNDEFINED, service=Component.UNDEFINED, className=Component.UNDEFINED, hoveredClass=Component.UNDEFINED, disabledClass=Component.UNDEFINED, pausedClass=Component.UNDEFINED, completeClass=Component.UNDEFINED, uploadingClass=Component.UNDEFINED, defaultStyle=Component.UNDEFINED, disabledStyle=Component.UNDEFINED, uploadingStyle=Component.UNDEFINED, completeStyle=Component.UNDEFINED, textLabel=Component.UNDEFINED, disabledMessage=Component.UNDEFINED, completedMessage=Component.UNDEFINED, fileNames=Component.UNDEFINED, filetypes=Component.UNDEFINED, startButton=Component.UNDEFINED, pauseButton=Component.UNDEFINED, cancelButton=Component.UNDEFINED, disabled=Component.UNDEFINED, disableDragAndDrop=Component.UNDEFINED, id=Component.UNDEFINED, isCompleted=Component.UNDEFINED, upload_id=Component.UNDEFINED, simultaneuosUploads=Component.UNDEFINED, onUploadErrorCallback=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'cancelButton', 'chunkSize', 'className', 'completeClass', 'completeStyle', 'completedMessage', 'defaultStyle', 'disableDragAndDrop', 'disabled', 'disabledClass', 'disabledMessage', 'disabledStyle', 'fileNames', 'filetypes', 'hoveredClass', 'isCompleted', 'maxFileSize', 'maxFiles', 'pauseButton', 'pausedClass', 'service', 'simultaneousUploads', 'simultaneuosUploads', 'startButton', 'textLabel', 'upload_id', 'uploadingClass', 'uploadingStyle']
+    def __init__(self, maxFiles=Component.UNDEFINED, maxFileSize=Component.UNDEFINED, maxTotalSize=Component.UNDEFINED, chunkSize=Component.UNDEFINED, simultaneousUploads=Component.UNDEFINED, service=Component.UNDEFINED, className=Component.UNDEFINED, hoveredClass=Component.UNDEFINED, disabledClass=Component.UNDEFINED, pausedClass=Component.UNDEFINED, completeClass=Component.UNDEFINED, uploadingClass=Component.UNDEFINED, defaultStyle=Component.UNDEFINED, disabledStyle=Component.UNDEFINED, uploadingStyle=Component.UNDEFINED, completeStyle=Component.UNDEFINED, textLabel=Component.UNDEFINED, disabledMessage=Component.UNDEFINED, completedMessage=Component.UNDEFINED, fileNames=Component.UNDEFINED, filetypes=Component.UNDEFINED, startButton=Component.UNDEFINED, pauseButton=Component.UNDEFINED, cancelButton=Component.UNDEFINED, disabled=Component.UNDEFINED, disableDragAndDrop=Component.UNDEFINED, id=Component.UNDEFINED, isCompleted=Component.UNDEFINED, upload_id=Component.UNDEFINED, simultaneuosUploads=Component.UNDEFINED, onUploadErrorCallback=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'cancelButton', 'chunkSize', 'className', 'completeClass', 'completeStyle', 'completedMessage', 'defaultStyle', 'disableDragAndDrop', 'disabled', 'disabledClass', 'disabledMessage', 'disabledStyle', 'fileNames', 'filetypes', 'hoveredClass', 'isCompleted', 'maxFileSize', 'maxFiles', 'maxTotalSize', 'pauseButton', 'pausedClass', 'service', 'simultaneousUploads', 'simultaneuosUploads', 'startButton', 'textLabel', 'upload_id', 'uploadingClass', 'uploadingStyle']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'cancelButton', 'chunkSize', 'className', 'completeClass', 'completeStyle', 'completedMessage', 'defaultStyle', 'disableDragAndDrop', 'disabled', 'disabledClass', 'disabledMessage', 'disabledStyle', 'fileNames', 'filetypes', 'hoveredClass', 'isCompleted', 'maxFileSize', 'maxFiles', 'pauseButton', 'pausedClass', 'service', 'simultaneousUploads', 'simultaneuosUploads', 'startButton', 'textLabel', 'upload_id', 'uploadingClass', 'uploadingStyle']
+        self.available_properties = ['id', 'cancelButton', 'chunkSize', 'className', 'completeClass', 'completeStyle', 'completedMessage', 'defaultStyle', 'disableDragAndDrop', 'disabled', 'disabledClass', 'disabledMessage', 'disabledStyle', 'fileNames', 'filetypes', 'hoveredClass', 'isCompleted', 'maxFileSize', 'maxFiles', 'maxTotalSize', 'pauseButton', 'pausedClass', 'service', 'simultaneousUploads', 'simultaneuosUploads', 'startButton', 'textLabel', 'upload_id', 'uploadingClass', 'uploadingStyle']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

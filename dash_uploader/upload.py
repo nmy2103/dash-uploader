@@ -52,6 +52,7 @@ def Upload(
     disabled=False,
     filetypes=None,
     max_file_size=1024,
+    max_total_size=None,
     chunk_size=1,
     default_style=None,
     upload_id=None,
@@ -90,6 +91,9 @@ def Upload(
         By default, all filetypes are accepted.
     max_file_size: numeric
         The maximum file size in Megabytes. Optional.
+    max_total_size: numeric or None
+        The maximum total size (in bytes) allowed for all files selected in
+        a single upload session.
     chunk_size: numeric
         The chunk size in Megabytes. Optional.
     default_style: None or dict
@@ -167,5 +171,8 @@ def Upload(
 
     if filetypes:
         arguments["filetypes"] = filetypes
+
+    if max_total_size is not None:
+        arguments["maxTotalSize"] = max_total_size
 
     return Upload_ReactComponent(**arguments)
