@@ -17,6 +17,7 @@ setup(
     url=package["homepage"],
     packages=[
         package_name,
+        package_name + "._build"
     ],
     include_package_data=True,
     license=package["license"],
