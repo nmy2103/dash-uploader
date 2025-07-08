@@ -127,7 +127,8 @@ export default class Upload_ReactComponent extends Component {
                 fileList: { files: currentFiles },
                 isComplete: true,
                 showEnabledButtons: false,
-                messageStatus: this.props.completedMessage + file.fileName || fileServer
+                // messageStatus: this.props.completedMessage + file.fileName || fileServer
+                messageStatus: this.props.fileNames.join('\n'),
             }, () => {
                 if (typeof this.props.onFileSuccess === 'function') {
                     this.props.onFileSuccess(file, fileServer);
@@ -321,6 +322,7 @@ export default class Upload_ReactComponent extends Component {
                             textAlign: 'center', wordWrap: 'break-word',
                             cursor: this.state.isUploading || this.props.disabled ? 'default' : 'pointer',
                             fontSize: this.state.isUploading ? '10px' : 'inherit',
+                            whiteSpace: 'pre-line',
                         }}
                         onMouseEnter={this.toggleHovered}
                         onMouseLeave={this.toggleHovered}
